@@ -23,8 +23,8 @@ Subsystem.prototype = {
 	},
 	setTimeToRecover: function(damageAmount)
 	{
-		var damageRatio = (damageAmount/this.damageCapability);
-		var unitOfDamage = damageRatio - (damageAmount%this.damageCapability);
+		var unitOfDamage = this.getUnitOfDamage(damageAmount);
+		
 		this.timeToRecover = this.unitOfReapir * unitOfDamage;
 	},
 	shutDownSubsystem: function()
@@ -46,5 +46,9 @@ Subsystem.prototype = {
 		{
 			this.canOperate = true;
 		}
+	},
+	getUnitOfDamage: function(damageAmount)
+	{
+		return Math.floor(damageAmount/this.damageCapability);
 	}
 };
